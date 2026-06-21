@@ -1,0 +1,343 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.header {
+  background: $gradient-primary;
+  padding: $spacing-lg $page-padding $spacing-xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100rpx;
+    right: -80rpx;
+    width: 300rpx;
+    height: 300rpx;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -60rpx;
+    left: -40rpx;
+    width: 200rpx;
+    height: 200rpx;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+  }
+}
+
+.greeting {
+  position: relative;
+  z-index: 1;
+
+  .greetingText {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-white;
+    margin-bottom: 8rpx;
+  }
+
+  .dateText {
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.content {
+  padding: 0 $page-padding;
+  margin-top: -40rpx;
+  position: relative;
+  z-index: 2;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.statCard {
+  .label {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-xs;
+  }
+
+  .valueRow {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8rpx;
+
+    .value {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $color-text-primary;
+    }
+
+    .unit {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-left: 6rpx;
+    }
+  }
+
+  .changeRow {
+    display: flex;
+    align-items: center;
+    gap: 6rpx;
+
+    .change {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-medium;
+
+      &.up { color: $color-success; }
+      &.down { color: $color-error; }
+    }
+
+    .changeLabel {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+  }
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+
+  .titleLeft {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .titleBar {
+      width: 6rpx;
+      height: 28rpx;
+      border-radius: 3rpx;
+      background: $gradient-primary;
+    }
+
+    .titleText {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+  }
+
+  .moreText {
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    display: flex;
+    align-items: center;
+    gap: 4rpx;
+  }
+}
+
+.customerList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.customerItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+
+  .avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: $radius-round;
+    background: $gradient-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .avatarText {
+      font-size: $font-size-md;
+      font-weight: $font-weight-semibold;
+      color: $color-text-white;
+    }
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+
+    .nameRow {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      margin-bottom: 8rpx;
+
+      .name {
+        font-size: $font-size-md;
+        font-weight: $font-weight-medium;
+        color: $color-text-primary;
+      }
+
+      .level {
+        font-size: $font-size-xs;
+        padding: 2rpx 12rpx;
+        border-radius: $radius-xs;
+        background: $color-high-value-bg;
+        color: $color-high-value;
+        flex-shrink: 0;
+      }
+    }
+
+    .meta {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-bottom: 8rpx;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8rpx;
+
+      .tag {
+        font-size: 20rpx;
+        padding: 2rpx 12rpx;
+        border-radius: $radius-xs;
+        background: $color-primary-bg;
+        color: $color-primary;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .consultant {
+    flex-shrink: 0;
+    text-align: right;
+
+    .consultantLabel {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-bottom: 4rpx;
+    }
+
+    .consultantName {
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+    }
+  }
+}
+
+.highValueCards {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.highValueItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+
+  .iconBox {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 32rpx;
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+
+    .title {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+      margin-bottom: 6rpx;
+    }
+
+    .desc {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+  }
+
+  .countBox {
+    flex-shrink: 0;
+    text-align: right;
+
+    .count {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+    }
+
+    .unit {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+  }
+}
+
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-md;
+}
+
+.quickActionItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md 0;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+
+  .icon {
+    font-size: 40rpx;
+  }
+
+  .name {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+
+  .badge {
+    font-size: $font-size-xs;
+    padding: 2rpx 12rpx;
+    border-radius: $radius-round;
+    background: $color-primary-bg;
+    color: $color-primary;
+    min-width: 40rpx;
+    text-align: center;
+  }
+}

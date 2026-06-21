@@ -1,0 +1,417 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.content {
+  padding: $spacing-md $page-padding;
+}
+
+.overviewCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+.overviewCard {
+  padding: $spacing-lg $spacing-md;
+  border-radius: $radius-lg;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  text-align: center;
+
+  .count {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+    margin-bottom: 6rpx;
+  }
+
+  .label {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+
+  &.high .count { color: $color-error; }
+  &.medium .count { color: $color-warning; }
+  &.low .count { color: $color-primary; }
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+
+  .titleLeft {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .titleBar {
+      width: 6rpx;
+      height: 28rpx;
+      border-radius: 3rpx;
+      background: $gradient-primary;
+    }
+
+    .titleText {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+  }
+
+  .moreText {
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+    display: flex;
+    align-items: center;
+    gap: 4rpx;
+  }
+}
+
+.warningList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.warningItem {
+  padding: $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+  border-left: 6rpx solid transparent;
+  position: relative;
+
+  &.high { border-left-color: $color-error; }
+  &.medium { border-left-color: $color-warning; }
+  &.low { border-left-color: $color-primary; }
+
+  &.handled {
+    opacity: 0.6;
+  }
+
+  .itemHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: $spacing-sm;
+
+    .title {
+      flex: 1;
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+      margin-right: $spacing-sm;
+    }
+
+    .level {
+      flex-shrink: 0;
+      font-size: 20rpx;
+      padding: 2rpx 12rpx;
+      border-radius: $radius-xs;
+
+      &.high {
+        background: $color-error-bg;
+        color: $color-error;
+      }
+
+      &.medium {
+        background: $color-warning-bg;
+        color: $color-warning;
+      }
+
+      &.low {
+        background: $color-primary-bg;
+        color: $color-primary;
+      }
+    }
+  }
+
+  .description {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    line-height: 1.5;
+    margin-bottom: $spacing-sm;
+  }
+
+  .itemFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .time {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+
+    .action {
+      font-size: $font-size-xs;
+      color: $color-primary;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  .handledBadge {
+    position: absolute;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    font-size: 20rpx;
+    padding: 2rpx 12rpx;
+    border-radius: $radius-xs;
+    background: $color-success-bg;
+    color: $color-success;
+  }
+}
+
+.tabBar {
+  display: flex;
+  background: $color-bg-card;
+  padding: $spacing-sm $page-padding;
+  gap: $spacing-sm;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.tabItem {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-sm 0;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: all $transition-base;
+
+  &.active {
+    background: $color-primary-bg;
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.channelList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.channelItem {
+  padding: $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+
+  .itemHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-sm;
+
+    .name {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+    }
+
+    .roi {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $color-success;
+
+      &.warning { color: $color-warning; }
+      &.danger { color: $color-error; }
+    }
+  }
+
+  .stats {
+    display: flex;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-sm;
+
+    .statItem {
+      .statLabel {
+        font-size: $font-size-xs;
+        color: $color-text-tertiary;
+        margin-bottom: 4rpx;
+      }
+
+      .statValue {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text-primary;
+      }
+    }
+  }
+
+  .roiBar {
+    height: 8rpx;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 4rpx;
+    overflow: hidden;
+
+    .roiFill {
+      height: 100%;
+      border-radius: 4rpx;
+      background: $gradient-primary;
+      transition: width $transition-base;
+
+      &.warning { background: $gradient-warm; }
+      &.danger { background: linear-gradient(90deg, #F53F3F 0%, #FF7D00 100%); }
+    }
+  }
+}
+
+.highValueList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.highValueItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+  border-left: 6rpx solid $color-warning;
+
+  .avatar {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: $radius-round;
+    background: $gradient-high-value;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .avatarText {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $color-text-white;
+    }
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+
+    .nameRow {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      margin-bottom: 6rpx;
+
+      .name {
+        font-size: $font-size-md;
+        font-weight: $font-weight-medium;
+        color: $color-text-primary;
+      }
+
+      .level {
+        font-size: 20rpx;
+        padding: 2rpx 10rpx;
+        border-radius: $radius-xs;
+        background: $color-high-value-bg;
+        color: $color-high-value;
+        flex-shrink: 0;
+      }
+    }
+
+    .meta {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-bottom: 6rpx;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6rpx;
+
+      .tag {
+        font-size: 20rpx;
+        padding: 2rpx 10rpx;
+        border-radius: $radius-xs;
+
+        &.warning {
+          background: $color-error-bg;
+          color: $color-error;
+        }
+
+        &.normal {
+          background: $color-warning-bg;
+          color: $color-warning;
+        }
+      }
+    }
+  }
+
+  .action {
+    flex-shrink: 0;
+
+    .actionBtn {
+      padding: 10rpx 24rpx;
+      border-radius: $radius-button;
+      background: $gradient-warm;
+      color: $color-text-white;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+.declineSection {
+  .declineStats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+  }
+
+  .declineStat {
+    padding: $spacing-md;
+    background: $color-bg-block;
+    border-radius: $radius-md;
+
+    .label {
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+      margin-bottom: $spacing-sm;
+    }
+
+    .value {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $color-text-primary;
+      margin-bottom: 4rpx;
+    }
+
+    .change {
+      font-size: $font-size-xs;
+      color: $color-error;
+
+      &.up { color: $color-success; }
+    }
+
+    .target {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-top: 4rpx;
+    }
+  }
+}

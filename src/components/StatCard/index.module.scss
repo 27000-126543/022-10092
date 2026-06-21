@@ -1,0 +1,86 @@
+@use '@/styles/variables.scss' as *;
+
+.statCard {
+  position: relative;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+
+  &.clickable {
+    &:active {
+      opacity: 0.9;
+      transform: scale(0.98);
+      transition: all $transition-base;
+    }
+  }
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+  display: block;
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: $spacing-sm;
+}
+
+.value {
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: 1.2;
+
+  &.customColor {
+    color: inherit;
+  }
+}
+
+.unit {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-left: $spacing-xs;
+}
+
+.changeRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.change {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+
+  &.up {
+    color: $color-success;
+  }
+
+  &.down {
+    color: $color-error;
+  }
+}
+
+.changeLabel {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.iconWrap {
+  position: absolute;
+  right: $spacing-lg;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.2;
+  font-size: 80rpx;
+}

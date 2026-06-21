@@ -1,0 +1,399 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.content {
+  padding: $spacing-md $page-padding;
+}
+
+.sectionCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+
+  .titleLeft {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .titleBar {
+      width: 6rpx;
+      height: 28rpx;
+      border-radius: 3rpx;
+      background: $gradient-primary;
+    }
+
+    .titleText {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+  }
+
+  .subtitle {
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+  }
+}
+
+.categoryCompare {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.pieContainer {
+  position: relative;
+  width: 260rpx;
+  height: 260rpx;
+  flex-shrink: 0;
+}
+
+.pie {
+  width: 260rpx;
+  height: 260rpx;
+  border-radius: 50%;
+}
+
+.pieCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 60%;
+  height: 60%;
+  background: $color-bg-card;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .centerValue {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+  }
+
+  .centerLabel {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+    margin-top: 4rpx;
+  }
+}
+
+.categoryLegend {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+  padding: $spacing-sm;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+
+  .itemHeader {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .dot {
+      width: 16rpx;
+      height: 16rpx;
+      border-radius: 4rpx;
+    }
+
+    .name {
+      flex: 1;
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+    }
+
+    .count {
+      font-size: $font-size-md;
+      font-weight: $font-weight-semibold;
+      color: $color-text-primary;
+    }
+  }
+
+  .itemMeta {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 24rpx;
+
+    .percent {
+      font-size: $font-size-sm;
+      color: $color-text-secondary;
+    }
+
+    .trend {
+      font-size: $font-size-xs;
+
+      &.up { color: $color-success; }
+      &.down { color: $color-error; }
+    }
+  }
+}
+
+.projectTabs {
+  display: flex;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.projectTab {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-sm 0;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  background: $color-bg-block;
+  transition: all $transition-base;
+
+  &.active {
+    background: $color-primary-bg;
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.projectList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.projectItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+
+  .rank {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-text-white;
+    flex-shrink: 0;
+
+    &.top1 { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); }
+    &.top2 { background: linear-gradient(135deg, #C0C0C0 0%, #A0A0A0 100%); }
+    &.top3 { background: linear-gradient(135deg, #CD7F32 0%, #A0522D 100%); }
+    &.normal { background: $color-text-tertiary; }
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+
+    .name {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+      margin-bottom: 6rpx;
+    }
+
+    .meta {
+      display: flex;
+      gap: $spacing-md;
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+
+      .metaItem {
+        display: flex;
+        align-items: center;
+        gap: 4rpx;
+      }
+    }
+  }
+
+  .right {
+    flex-shrink: 0;
+    text-align: right;
+
+    .price {
+      font-size: $font-size-md;
+      font-weight: $font-weight-semibold;
+      color: $color-high-value;
+      margin-bottom: 4rpx;
+    }
+
+    .conversion {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+    }
+  }
+
+  .trend {
+    width: 48rpx;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: $font-size-lg;
+
+    &.up { color: $color-success; }
+    &.down { color: $color-error; }
+    &.stable { color: $color-text-tertiary; }
+  }
+}
+
+.crowdPackages {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.crowdCard {
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  position: relative;
+  overflow: hidden;
+
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-sm;
+
+    .name {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-text-white;
+    }
+
+    .count {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $color-text-white;
+    }
+  }
+
+  .cardDesc {
+    font-size: $font-size-sm;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: $spacing-sm;
+  }
+
+  .cardMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .behavior {
+      font-size: $font-size-xs;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .action {
+      font-size: $font-size-xs;
+      padding: 6rpx 16rpx;
+      background: rgba(255, 255, 255, 0.25);
+      color: $color-text-white;
+      border-radius: $radius-round;
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  .cardBg {
+    position: absolute;
+    right: -30rpx;
+    bottom: -30rpx;
+    font-size: 120rpx;
+    opacity: 0.15;
+  }
+}
+
+.crowdCustomers {
+  margin-top: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.customerItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+
+  .avatar {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: $radius-round;
+    background: $gradient-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .avatarText {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $color-text-white;
+    }
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+
+    .name {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $color-text-primary;
+      margin-bottom: 4rpx;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6rpx;
+
+      .tag {
+        font-size: 20rpx;
+        padding: 2rpx 8rpx;
+        border-radius: $radius-xs;
+        background: $color-primary-bg;
+        color: $color-primary;
+      }
+    }
+  }
+
+  .level {
+    font-size: 20rpx;
+    padding: 2rpx 10rpx;
+    border-radius: $radius-xs;
+    background: $color-high-value-bg;
+    color: $color-high-value;
+    flex-shrink: 0;
+  }
+}

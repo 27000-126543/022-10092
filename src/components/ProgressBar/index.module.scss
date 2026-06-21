@@ -1,0 +1,62 @@
+@use '@/styles/variables.scss' as *;
+
+.progressWrap {
+  width: 100%;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-sm;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.percent {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.progressBar {
+  width: 100%;
+  background: $color-bg-block;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: $gradient-primary;
+  transition: width $transition-base ease;
+
+  &.striped {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 40rpx 40rpx;
+  }
+
+  &.animated {
+    animation: progress-stripes 1s linear infinite;
+  }
+}
+
+@keyframes progress-stripes {
+  from {
+    background-position: 40rpx 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}

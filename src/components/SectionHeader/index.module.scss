@@ -1,0 +1,56 @@
+@use '@/styles/variables.scss' as *;
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-lg 0 $spacing-md;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.titleBar {
+  width: 6rpx;
+  height: 28rpx;
+  border-radius: 3rpx;
+  background: $gradient-primary;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  margin-left: $spacing-sm;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+
+  &.clickable {
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+.actionText {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+}
+
+.arrow {
+  font-size: $font-size-lg;
+  color: $color-text-tertiary;
+  line-height: 1;
+}
