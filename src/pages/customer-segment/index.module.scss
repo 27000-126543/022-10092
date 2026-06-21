@@ -297,29 +297,3 @@
     flex-shrink: 0;
   }
 }
-
-.memberSummary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $spacing-md;
-  margin-bottom: $spacing-lg;
-}
-
-.memberStat {
-  text-align: center;
-  padding: $spacing-md;
-  background: $color-bg-block;
-  border-radius: $radius-md;
-
-  .value {
-    font-size: $font-size-xl;
-    font-weight: $font-weight-bold;
-    color: $color-text-primary;
-    margin-bottom: 4rpx;
-  }
-
-  .label {
-    font-size: $font-size-xs;
-    color: $color-text-tertiary;
-  }
-}

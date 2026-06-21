@@ -1,4 +1,4 @@
-import { ProjectItem, CustomerItem, CustomerSegment } from '@/types';
+import { ProjectItem, CustomerItem, CustomerSegment, ProjectCrowdDetail } from '@/types';
 
 export const lightVsSurgeryData = [
   { name: '轻医美意向', value: 7856, color: '#0FC6C2' },
@@ -122,33 +122,182 @@ export const projectCrowdPackages: CustomerSegment[] = [
   }
 ];
 
-export const waterLightCustomers: CustomerItem[] = [
+export const crowdPackageDetails: ProjectCrowdDetail[] = [
   {
-    id: 'w1',
-    name: '李女士',
-    level: '金卡',
-    lastVisit: '5天前',
-    totalConsume: 68000,
-    tags: ['干性皮肤', '暗沉', '水光意向'],
-    consultant: '张咨询师'
+    packageId: 'pkg-1',
+    totalCount: 2156,
+    recentBehavior: '最近30天咨询过皮肤项目',
+    suggestion: '推水润年卡套餐，3次水光+1次光子',
+    customers: [
+      {
+        id: 'w1',
+        name: '李女士',
+        level: '金卡',
+        lastVisit: '5天前',
+        totalConsume: 68000,
+        tags: ['干性皮肤', '暗沉', '水光意向'],
+        consultant: '张咨询师'
+      },
+      {
+        id: 'w2',
+        name: '王女士',
+        level: '银卡',
+        lastVisit: '2周前',
+        totalConsume: 25000,
+        tags: ['补水需求', '首次体验', '敏感肌'],
+        consultant: '李咨询师'
+      },
+      {
+        id: 'w3',
+        name: '赵女士',
+        level: '钻石卡',
+        lastVisit: '昨天',
+        totalConsume: 156000,
+        tags: ['高端客户', '定期水光', '水光年卡'],
+        consultant: '陈咨询师'
+      },
+      {
+        id: 'w4',
+        name: '孙女士',
+        level: '普通会员',
+        lastVisit: '1周前',
+        totalConsume: 8600,
+        tags: ['皮肤干燥', '初次咨询', '价格敏感'],
+        consultant: '王咨询师'
+      }
+    ]
   },
   {
-    id: 'w2',
-    name: '王女士',
-    level: '银卡',
-    lastVisit: '2周前',
-    totalConsume: 25000,
-    tags: ['补水需求', '首次体验'],
-    consultant: '李咨询师'
+    packageId: 'pkg-2',
+    totalCount: 1820,
+    recentBehavior: '咨询过热玛吉/超声炮等项目',
+    suggestion: '推光电组合疗程，超声炮+热玛吉',
+    customers: [
+      {
+        id: 'e1',
+        name: '陈女士',
+        level: '钻石卡',
+        lastVisit: '3天前',
+        totalConsume: 220000,
+        tags: ['抗衰需求', '热玛吉意向', '高端客户'],
+        consultant: '陈咨询师'
+      },
+      {
+        id: 'e2',
+        name: '杨女士',
+        level: '金卡',
+        lastVisit: '1周前',
+        totalConsume: 86000,
+        tags: ['皮肤松弛', '超声炮咨询', '复购客户'],
+        consultant: '李咨询师'
+      },
+      {
+        id: 'e3',
+        name: '周女士',
+        level: '银卡',
+        lastVisit: '2周前',
+        totalConsume: 42000,
+        tags: ['抗衰初老', '光电项目', '可推套餐'],
+        consultant: '张咨询师'
+      },
+      {
+        id: 'e4',
+        name: '吴女士',
+        level: '金卡',
+        lastVisit: '4天前',
+        totalConsume: 95000,
+        tags: ['颈部松弛', '热玛吉到期', '高客单'],
+        consultant: '王咨询师'
+      }
+    ]
   },
   {
-    id: 'w3',
-    name: '张女士',
-    level: '钻石卡',
-    lastVisit: '昨天',
-    totalConsume: 156000,
-    tags: ['高端客户', '定期水光'],
-    consultant: '陈咨询师'
+    packageId: 'pkg-3',
+    totalCount: 568,
+    recentBehavior: '咨询过修复类项目',
+    suggestion: '安排专家面诊，定制修复方案',
+    customers: [
+      {
+        id: 'n1',
+        name: '刘女士',
+        level: '金卡',
+        lastVisit: '6天前',
+        totalConsume: 135000,
+        tags: ['双眼皮修复', '效果不满意', '二次手术'],
+        consultant: '李咨询师'
+      },
+      {
+        id: 'n2',
+        name: '马女士',
+        level: '银卡',
+        lastVisit: '2周前',
+        totalConsume: 58000,
+        tags: ['鼻修复', '术后不满意', '谨慎型'],
+        consultant: '张咨询师'
+      },
+      {
+        id: 'n3',
+        name: '郑女士',
+        level: '钻石卡',
+        lastVisit: '1周前',
+        totalConsume: 280000,
+        tags: ['眼鼻综合修复', '高端客户', '需专家'],
+        consultant: '陈咨询师'
+      },
+      {
+        id: 'n4',
+        name: '何女士',
+        level: '普通会员',
+        lastVisit: '3周前',
+        totalConsume: 22000,
+        tags: ['眼修复咨询', '初次了解', '需建立信任'],
+        consultant: '王咨询师'
+      }
+    ]
+  },
+  {
+    packageId: 'pkg-4',
+    totalCount: 1340,
+    recentBehavior: '多次浏览抗衰项目',
+    suggestion: '推全面部抗衰方案',
+    customers: [
+      {
+        id: 'a1',
+        name: '林女士',
+        level: '金卡',
+        lastVisit: '4天前',
+        totalConsume: 105000,
+        tags: ['35+抗衰', '全面部松弛', '高端抗衰'],
+        consultant: '陈咨询师'
+      },
+      {
+        id: 'a2',
+        name: '许女士',
+        level: '银卡',
+        lastVisit: '1周前',
+        totalConsume: 48000,
+        tags: ['法令纹', '抗衰刚需', '可推套餐'],
+        consultant: '李咨询师'
+      },
+      {
+        id: 'a3',
+        name: '张女士',
+        level: '钻石卡',
+        lastVisit: '昨天',
+        totalConsume: 310000,
+        tags: ['全脸抗衰', 'VIP客户', '长期保养'],
+        consultant: '张咨询师'
+      },
+      {
+        id: 'a4',
+        name: '黄女士',
+        level: '普通会员',
+        lastVisit: '2周前',
+        totalConsume: 12000,
+        tags: ['初抗衰', '预算有限', '可推入门方案'],
+        consultant: '王咨询师'
+      }
+    ]
   }
 ];
 

@@ -7,11 +7,10 @@ import {
   newOldCustomerData,
   amountSegments,
   visitFrequencySegments,
-  repurchaseCycleData,
-  memberValueSegments
+  repurchaseCycleData
 } from '@/data/customer';
 
-type TabType = 'newOld' | 'amount' | 'frequency' | 'repurchase' | 'member';
+type TabType = 'newOld' | 'amount' | 'frequency' | 'repurchase';
 
 const CustomerSegmentPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('newOld');
@@ -26,8 +25,7 @@ const CustomerSegmentPage: React.FC = () => {
     { key: 'newOld', label: '新老客' },
     { key: 'amount', label: '消费额' },
     { key: 'frequency', label: '到店频次' },
-    { key: 'repurchase', label: '复购周期' },
-    { key: 'member', label: '会员价值' }
+    { key: 'repurchase', label: '复购周期' }
   ];
 
   const totalCustomers = 12586;
@@ -179,39 +177,6 @@ const CustomerSegmentPage: React.FC = () => {
     );
   };
 
-  const renderMemberSection = () => {
-    const total = memberValueSegments.reduce((sum, s) => sum + s.count, 0);
-    const vipCount = memberValueSegments.slice(0, 3).reduce((sum, s) => sum + s.count, 0);
-    const vipPercent = ((vipCount / total) * 100).toFixed(1);
-
-    return (
-      <View className={styles.sectionCard}>
-        <View className={styles.sectionTitle}>
-          <View className={styles.titleLeft}>
-            <View className={styles.titleBar} />
-            <Text className={styles.titleText}>会员价值分层</Text>
-          </View>
-          <Text className={styles.subtitle}>按年消费金额</Text>
-        </View>
-        <View className={styles.memberSummary}>
-          <View className={styles.memberStat}>
-            <Text className={styles.value}>{total.toLocaleString()}</Text>
-            <Text className={styles.label}>会员总数</Text>
-          </View>
-          <View className={styles.memberStat}>
-            <Text className={styles.value} style={{ color: '#FF5722' }}>{vipCount}</Text>
-            <Text className={styles.label}>高价值会员</Text>
-          </View>
-          <View className={styles.memberStat}>
-            <Text className={styles.value} style={{ color: '#00B42A' }}>{vipPercent}%</Text>
-            <Text className={styles.label}>会员占比</Text>
-          </View>
-        </View>
-        {renderSegmentList(memberValueSegments)}
-      </View>
-    );
-  };
-
   const renderContent = () => {
     switch (activeTab) {
       case 'newOld':
@@ -227,8 +192,6 @@ const CustomerSegmentPage: React.FC = () => {
         return renderFrequencySection();
       case 'repurchase':
         return renderRepurchaseSection();
-      case 'member':
-        return renderMemberSection();
       default:
         return null;
     }

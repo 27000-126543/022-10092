@@ -320,18 +320,62 @@
       backdrop-filter: blur(10px);
     }
   }
+}
 
-  .cardBg {
-    position: absolute;
-    right: -30rpx;
-    bottom: -30rpx;
-    font-size: 120rpx;
-    opacity: 0.15;
+.crowdDetail {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-top: $spacing-sm;
+  border: 2rpx solid $color-border-light;
+}
+
+.detailSummary {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+  padding: $spacing-md;
+  background: $color-bg-block;
+  border-radius: $radius-md;
+}
+
+.summaryItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .summaryLabel {
+    font-size: $font-size-sm;
+    color: $color-text-tertiary;
+  }
+
+  .summaryValue {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+  }
+}
+
+.detailTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+
+  .detailTitleText {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  .detailCount {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
   }
 }
 
 .crowdCustomers {
-  margin-top: $spacing-md;
   display: flex;
   flex-direction: column;
   gap: $spacing-sm;
@@ -341,7 +385,7 @@
   display: flex;
   align-items: center;
   gap: $spacing-md;
-  padding: $spacing-sm $spacing-md;
+  padding: $spacing-md;
   background: $color-bg-block;
   border-radius: $radius-md;
 
@@ -362,23 +406,43 @@
     }
   }
 
-  .info {
+  .customerInfo {
     flex: 1;
     min-width: 0;
 
-    .name {
-      font-size: $font-size-sm;
-      font-weight: $font-weight-medium;
-      color: $color-text-primary;
+    .customerNameRow {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
       margin-bottom: 4rpx;
+
+      .customerName {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text-primary;
+      }
+
+      .customerLevel {
+        font-size: 20rpx;
+        padding: 2rpx 8rpx;
+        border-radius: $radius-xs;
+        background: $color-high-value-bg;
+        color: $color-high-value;
+      }
     }
 
-    .tags {
+    .customerMeta {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-bottom: 6rpx;
+    }
+
+    .customerTags {
       display: flex;
       flex-wrap: wrap;
       gap: 6rpx;
 
-      .tag {
+      .customerTag {
         font-size: 20rpx;
         padding: 2rpx 8rpx;
         border-radius: $radius-xs;
@@ -388,12 +452,20 @@
     }
   }
 
-  .level {
-    font-size: 20rpx;
-    padding: 2rpx 10rpx;
-    border-radius: $radius-xs;
-    background: $color-high-value-bg;
-    color: $color-high-value;
+  .consultantCol {
     flex-shrink: 0;
+    text-align: right;
+
+    .consultantLabel {
+      font-size: $font-size-xs;
+      color: $color-text-tertiary;
+      margin-bottom: 4rpx;
+    }
+
+    .consultantName {
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      color: $color-text-secondary;
+    }
   }
 }

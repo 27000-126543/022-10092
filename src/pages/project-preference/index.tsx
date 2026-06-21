@@ -7,14 +7,14 @@ import {
   lightVsSurgeryData,
   hotProjects,
   projectCrowdPackages,
-  waterLightCustomers
+  crowdPackageDetails
 } from '@/data/project';
 
 type ProjectCategory = 'all' | 'light' | 'surgery';
 
 const ProjectPreferencePage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
-  const [expandedPackage, setExpandedPackage] = useState<string | null>('pkg-1');
+  const [expandedPackage, setExpandedPackage] = useState<string | null>(null);
 
   usePullDownRefresh(() => {
     setTimeout(() => {
@@ -52,6 +52,13 @@ const ProjectPreferencePage: React.FC = () => {
     return price.toLocaleString();
   };
 
+  const formatMoney = (value: number) => {
+    if (value >= 10000) {
+      return (value / 10000).toFixed(1) + '万';
+    }
+    return value.toLocaleString();
+  };
+
   const getTrendIcon = (trend: string) => {
     switch (trend) {
       case 'up': return '↑';
@@ -69,6 +76,10 @@ const ProjectPreferencePage: React.FC = () => {
 
   const togglePackage = (pkgId: string) => {
     setExpandedPackage(expandedPackage === pkgId ? null : pkgId);
+  };
+
+  const getCrowdDetail = (pkgId: string) => {
+    return crowdPackageDetails.find(d => d.packageId === pkgId);
   };
 
   return (
@@ -182,49 +193,88 @@ const ProjectPreferencePage: React.FC = () => {
             <Text className={styles.subtitle}>精准推荐</Text>
           </View>
           <View className={styles.crowdPackages}>
-            {projectCrowdPackages.map((pkg) => (
-              <View key={pkg.id}>
-                <View
-                  className={styles.crowdCard}
-                  style={{
-                    background: `linear-gradient(135deg, ${pkg.color} 0%, ${pkg.color}dd 100%)`
-                  }}
-                  onClick={() => togglePackage(pkg.id)}
-                >
-                  <View className={styles.cardHeader}>
-                    <Text className={styles.name}>{pkg.name}</Text>
-                    <Text className={styles.count}>{pkg.count}人</Text>
+            {projectCrowdPackages.map((pkg) => {
+              const detail = getCrowdDetail(pkg.id);
+              const isExpanded = expandedPackage === pkg.id;
+              return (
+                <View key={pkg.id}>
+                  <View
+                    className={styles.crowdCard}
+                    style={{
+                      background: `linear-gradient(135deg, ${pkg.color} 0%, ${pkg.color}dd 100%)`
+                    }}
+                    onClick={() => togglePackage(pkg.id)}
+                  >
+                    <View className={styles.cardHeader}>
+                      <Text className={styles.name}>{pkg.name}</Text>
+                      <Text className={styles.count}>{pkg.count}人</Text>
+                    </View>
+                    <Text className={styles.cardDesc}>{pkg.description}</Text>
+                    <View className={styles.cardMeta}>
+                      <Text className={styles.behavior}>{pkg.lastBehavior}</Text>
+                      <Text className={styles.action}>
+                        {isExpanded ? '收起详情' : '查看详情'} {isExpanded ? '▲' : '›'}
+                      </Text>
+                    </View>
                   </View>
-                  <Text className={styles.cardDesc}>{pkg.description}</Text>
-                  <View className={styles.cardMeta}>
-                    <Text className={styles.behavior}>{pkg.lastBehavior}</Text>
-                    <Text className={styles.action}>查看详情 ›</Text>
-                  </View>
-                </View>
-                {expandedPackage === pkg.id && (
-                  <View className={styles.crowdCustomers}>
-                    {waterLightCustomers.map((customer) => (
-                      <View key={customer.id} className={styles.customerItem}>
-                        <View className={styles.avatar}>
-                          <Text className={styles.avatarText}>
-                            {customer.name.charAt(0)}
+                  {isExpanded && detail && (
+                    <View className={styles.crowdDetail}>
+                      <View className={styles.detailSummary}>
+                        <View className={styles.summaryItem}>
+                          <Text className={styles.summaryLabel}>人群规模</Text>
+                          <Text className={styles.summaryValue} style={{ color: pkg.color }}>
+                            {detail.totalCount}人
                           </Text>
                         </View>
-                        <View className={styles.info}>
-                          <Text className={styles.name}>{customer.name}</Text>
-                          <View className={styles.tags}>
-                            {customer.tags.slice(0, 2).map((tag, idx) => (
-                              <Text key={idx} className={styles.tag}>{tag}</Text>
-                            ))}
-                          </View>
+                        <View className={styles.summaryItem}>
+                          <Text className={styles.summaryLabel}>最近行为</Text>
+                          <Text className={styles.summaryValue}>{detail.recentBehavior}</Text>
                         </View>
-                        <Text className={styles.level}>{customer.level}</Text>
+                        <View className={styles.summaryItem}>
+                          <Text className={styles.summaryLabel}>建议动作</Text>
+                          <Text className={styles.summaryValue} style={{ color: pkg.color }}>
+                            {detail.suggestion}
+                          </Text>
+                        </View>
                       </View>
-                    ))}
-                  </View>
-                )}
-              </View>
-            ))}
+                      <View className={styles.detailTitle}>
+                        <Text className={styles.detailTitleText}>推荐客户明细</Text>
+                        <Text className={styles.detailCount}>共 {detail.customers.length} 人</Text>
+                      </View>
+                      <View className={styles.crowdCustomers}>
+                        {detail.customers.map((customer) => (
+                          <View key={customer.id} className={styles.customerItem}>
+                            <View className={styles.avatar}>
+                              <Text className={styles.avatarText}>
+                                {customer.name.charAt(0)}
+                              </Text>
+                            </View>
+                            <View className={styles.customerInfo}>
+                              <View className={styles.customerNameRow}>
+                                <Text className={styles.customerName}>{customer.name}</Text>
+                                <Text className={styles.customerLevel}>{customer.level}</Text>
+                              </View>
+                              <Text className={styles.customerMeta}>
+                                累计消费 ¥{formatMoney(customer.totalConsume)} · {customer.lastVisit}到店
+                              </Text>
+                              <View className={styles.customerTags}>
+                                {customer.tags.slice(0, 3).map((tag, idx) => (
+                                  <Text key={idx} className={styles.customerTag}>{tag}</Text>
+                                ))}
+                              </View>
+                            </View>
+                            <View className={styles.consultantCol}>
+                              <Text className={styles.consultantLabel}>负责咨询师</Text>
+                              <Text className={styles.consultantName}>{customer.consultant}</Text>
+                            </View>
+                          </View>
+                        ))}
+                      </View>
+                    </View>
+                  )}
+                </View>
+              );
+            })}
           </View>
         </View>
       </View>

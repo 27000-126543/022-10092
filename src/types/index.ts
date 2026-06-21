@@ -67,6 +67,32 @@ export interface ConsultantLoad {
   conversionRate: number;
 }
 
+export interface MemberLevelDetail {
+  id: string;
+  name: string;
+  count: number;
+  percentage: number;
+  color: string;
+  consumeContribution: string;
+  avgConsume: string;
+  recentActive: string;
+  suggestion: string;
+  icon: string;
+}
+
+export interface MemberViewCustomer extends CustomerItem {
+  viewTag: string;
+  viewSuggestion: string;
+}
+
+export interface ProjectCrowdDetail {
+  packageId: string;
+  customers: CustomerItem[];
+  totalCount: number;
+  recentBehavior: string;
+  suggestion: string;
+}
+
 export interface ChannelQuality {
   id: string;
   name: string;

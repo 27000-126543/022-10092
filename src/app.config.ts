@@ -3,6 +3,7 @@ export default defineAppConfig({
     'pages/index/index',
     'pages/customer-segment/index',
     'pages/project-preference/index',
+    'pages/member-value/index',
     'pages/operation/index',
     'pages/warning/index'
   ],
@@ -30,6 +31,10 @@ export default defineAppConfig({
       {
         pagePath: 'pages/project-preference/index',
         text: '项目偏好'
+      },
+      {
+        pagePath: 'pages/member-value/index',
+        text: '会员价值'
       },
       {
         pagePath: 'pages/operation/index',
